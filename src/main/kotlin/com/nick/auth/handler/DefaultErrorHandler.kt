@@ -13,9 +13,9 @@ class DefaultErrorHandler: ResponseEntityExceptionHandler() {
     @ExceptionHandler(value = [(AuthException::class)])
     fun handleAuthException(ex: AuthException): ResponseEntity<RestError> {
         val errorBody = RestError(
-            message = ex.reason!!,
-            scope = "default scope"
+            message = ex.reason,
+            scope = ex.scope
         )
-        return ResponseEntity(errorBody, ex.httpStatus!!)
+        return ResponseEntity(errorBody, ex.httpStatus)
     }
 }

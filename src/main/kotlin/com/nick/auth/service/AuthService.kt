@@ -20,6 +20,7 @@ class AuthService(
 
     fun generateAccessToken(accessTokenRequest: CreateAccessTokenRequest, userId: UUID): CreateAccessTokenResponse {
         authValidator.validateUser(userId)
+        authValidator.validateRefreshToken(accessTokenRequest.refreshToken)
         return CreateAccessTokenResponse("token", "token", LocalDate.now())
     }
 
