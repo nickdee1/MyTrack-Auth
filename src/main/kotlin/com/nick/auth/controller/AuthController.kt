@@ -1,6 +1,11 @@
 package com.nick.auth.controller
 
-import com.nick.auth.api.*
+import com.nick.auth.api.request.CreateRefreshTokenRequest
+import com.nick.auth.api.request.CreateUserRequest
+import com.nick.auth.api.request.GetAccessTokenRequest
+import com.nick.auth.api.response.CreateRefreshTokenResponse
+import com.nick.auth.api.response.CreateUserResponse
+import com.nick.auth.api.response.GetAccessTokenResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

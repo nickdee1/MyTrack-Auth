@@ -1,4 +1,4 @@
-package com.nick.auth.api
+package com.nick.auth.api.response
 
 data class CreateUserResponse(
     val userId: Long,
