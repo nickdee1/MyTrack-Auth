@@ -1,5 +1,5 @@
 package com.nick.auth.api.request
 
-data class GetAccessTokenRequest(
+data class CreateAccessTokenRequest(
     val refreshToken: String
 )
