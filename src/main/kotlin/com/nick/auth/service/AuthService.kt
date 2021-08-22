@@ -8,9 +8,9 @@ import com.nick.auth.api.response.CreateRefreshTokenResponse
 import com.nick.auth.api.response.CreateUserResponse
 import com.nick.auth.repository.UserRepository
 import com.nick.auth.service.validate.AuthValidator
-import org.springframework.stereotype.Service
 import java.time.LocalDate
-import java.util.*
+import java.util.UUID
+import org.springframework.stereotype.Service
 
 @Service
 class AuthService(
@@ -19,8 +19,7 @@ class AuthService(
 ) {
 
     fun generateAccessToken(accessTokenRequest: CreateAccessTokenRequest, userId: UUID): CreateAccessTokenResponse {
-        authValidator.validateUser(userId)
-        authValidator.validateRefreshToken(accessTokenRequest.refreshToken)
+        authValidator.validateOnGenerateAccessToken(userId, accessTokenRequest.refreshToken)
         return CreateAccessTokenResponse("token", "token", LocalDate.now())
     }
 

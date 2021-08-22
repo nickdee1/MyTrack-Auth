@@ -1,16 +1,20 @@
 package com.nick.auth.controller
 
+import com.nick.auth.api.request.CreateAccessTokenRequest
 import com.nick.auth.api.request.CreateRefreshTokenRequest
 import com.nick.auth.api.request.CreateUserRequest
-import com.nick.auth.api.request.CreateAccessTokenRequest
+import com.nick.auth.api.response.CreateAccessTokenResponse
 import com.nick.auth.api.response.CreateRefreshTokenResponse
 import com.nick.auth.api.response.CreateUserResponse
-import com.nick.auth.api.response.CreateAccessTokenResponse
 import com.nick.auth.service.AuthService
+import java.util.UUID
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.*
-import java.util.*
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestHeader
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/auth")
@@ -19,8 +23,10 @@ class AuthController(
 ) {
 
     @PostMapping("/token")
-    fun generateAccessToken(@RequestHeader(required = true) userId: UUID,
-                            @RequestBody tokenRequestBody: CreateAccessTokenRequest): ResponseEntity<CreateAccessTokenResponse> {
+    fun generateAccessToken(
+        @RequestHeader(required = true) userId: UUID,
+        @RequestBody tokenRequestBody: CreateAccessTokenRequest
+    ): ResponseEntity<CreateAccessTokenResponse> {
         val accessToken = authService.generateAccessToken(tokenRequestBody, userId)
         return ResponseEntity(accessToken, HttpStatus.OK)
     }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
 @ControllerAdvice
-class DefaultErrorHandler: ResponseEntityExceptionHandler() {
+class DefaultErrorHandler : ResponseEntityExceptionHandler() {
 
     @ExceptionHandler(value = [(AuthException::class)])
     fun handleAuthException(ex: AuthException): ResponseEntity<RestError> {

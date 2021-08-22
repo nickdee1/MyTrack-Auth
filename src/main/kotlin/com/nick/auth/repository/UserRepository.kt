@@ -1,10 +1,10 @@
 package com.nick.auth.repository
 
 import com.nick.auth.api.UsersEntity
+import java.util.UUID
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-import java.util.*
 
 @Repository
-interface UserRepository: JpaRepository<UsersEntity, UUID>
+interface UserRepository : JpaRepository<UsersEntity, UUID>
 

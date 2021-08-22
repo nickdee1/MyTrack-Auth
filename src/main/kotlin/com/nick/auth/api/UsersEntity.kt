@@ -1,11 +1,16 @@
 package com.nick.auth.api
 
-import java.util.*
-import javax.persistence.*
+import java.util.UUID
+import javax.persistence.Basic
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.Id
+import javax.persistence.OneToMany
+import javax.persistence.Table
 
 @Entity
 @Table(name = "users", schema = "public", catalog = "postgres")
-class UsersEntity (
+class UsersEntity(
     @Id
     @Column(name = "id", nullable = false, insertable = false, updatable = false)
     var id: UUID? = null,
@@ -22,12 +27,5 @@ class UsersEntity (
     var accessTokens: List<AccessTokensEntity>? = null,
 
     @OneToMany(mappedBy = "refUsersEntity")
-    var refreshTokens: List<RefreshTokensEntity>? = null,
-
-//    override fun toString(): String =
-//        "Entity of type: ${javaClass.name} ( " +
-//            "id = $id " +
-//            "username = $username " +
-//            "password = $password " +
-//            ")" )
+    var refreshTokens: List<RefreshTokensEntity>? = null
 )
