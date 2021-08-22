@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 import com.nick.auth.exception.AuthException
 import com.nick.auth.repository.RefreshTokenRepository
+import com.nick.auth.repository.findByRefreshTokenOrNull
 import org.springframework.http.HttpStatus
 
 @Service
@@ -23,7 +24,7 @@ class AuthValidator(
             )
 
     fun validateRefreshToken(token: String) {
-        refreshTokenRepository.findByRefreshToken(token) ?:
+        refreshTokenRepository.findByRefreshTokenOrNull(token) ?:
         throw AuthException(
             reason = "Wrong refresh token provided",
             scope = "{body}.refreshToken",
