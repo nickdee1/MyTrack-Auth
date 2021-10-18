@@ -1,5 +1,6 @@
 package com.nick.auth.api
 
+import java.time.LocalDateTime
 import java.util.UUID
 import javax.persistence.Basic
 import javax.persistence.Column
@@ -19,7 +20,7 @@ data class AccessTokensEntity(
 
     @Basic
     @Column(name = "date_issued", nullable = true)
-    var dateIssued: java.sql.Timestamp? = null,
+    var dateIssued: LocalDateTime? = null,
 
     @Basic
     @Column(name = "refresh_token", nullable = true, insertable = false, updatable = false)
@@ -28,6 +29,10 @@ data class AccessTokensEntity(
     @Basic
     @Column(name = "user_id", nullable = true, insertable = false, updatable = false)
     var userId: UUID? = null,
+
+    @Basic
+    @Column(name = "revoked", nullable = false)
+    var revoked: Boolean = false,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "refresh_token", referencedColumnName = "refresh_token")

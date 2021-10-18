@@ -26,6 +26,10 @@ data class RefreshTokensEntity(
     @Column(name = "user_id", nullable = true, insertable = false, updatable = false)
     var userId: UUID? = null,
 
+    @Basic
+    @Column(name = "revoked", nullable = true)
+    var revoked: Boolean? = null,
+
     @OneToMany(mappedBy = "refRefreshTokensEntity")
     var refAccessTokensEntities: List<AccessTokensEntity>? = null,
 
